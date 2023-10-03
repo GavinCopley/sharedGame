@@ -1,0 +1,11 @@
+# CSP course meta data
+Unit1:
+  title: Build a Time Box
+  description:  Install Tools.  Design lab notebook.  Learn GitHub Pages. Work with John. 
+  start: 0
+  end: 3
+Unit2:
+  title: Learn Language
+  description: Learn (JavaScript|Python|Java).  Start Agile development process.
+  start: 4
+  end: 7
