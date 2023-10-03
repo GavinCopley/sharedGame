@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Calculator MD | CompSci Blogs</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Calculator MD" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Grab of the Calculator from APCSA repo." />
+<meta property="og:description" content="Grab of the Calculator from APCSA repo." />
+<link rel="canonical" href="http://localhost:4200/student/2023/08/30/Calculator.html" />
+<meta property="og:url" content="http://localhost:4200/student/2023/08/30/Calculator.html" />
+<meta property="og:site_name" content="CompSci Blogs" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-08-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Calculator MD" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-08-30T00:00:00+00:00","datePublished":"2023-08-30T00:00:00+00:00","description":"Grab of the Calculator from APCSA repo.","headline":"Calculator MD","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4200/student/2023/08/30/Calculator.html"},"url":"http://localhost:4200/student/2023/08/30/Calculator.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/student/assets/css/style.css?v=84ae1bb761f8c998d58ce7301ed49e2b34ca03a8">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+  <script src="/student/assets/js/respond.js"></script>
+
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#353535">
+<meta name="msapplication-navbutton-color" content="#353535">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/student/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+</head><body>
+
+  <div class="wrapper">
+    <header><header class="site-header">
+
+  <div id="header">
+    <nav>
+      <ul>
+        <li class="fork"><a href="/student/">Home</a></li>
+        <li class="fork"><a href="/student/compsci">Time Box</a></li>
+        <li class="fork"><a href="/student/blogs">Blogs</a></li>
+        <li class="title"><a href="/student/help">Help</a></li>
+        <li class="title"><a href="https://github.com/GavinCopley/sharedGame#readme">View On GitHub</a></li>
+      </ul>
+    </nav>
+  </div><!-- end header -->
+</header></header>
+
+
+    <section>
+      <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 
+      class="post-title p-name" itemprop="name headline">Calculator MD
+      • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></h1>
+
+    <p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-08-30T00:00:00+00:00" itemprop="datePublished">
+        Aug 30, 2023
+      </time>
+    </p><h2>Description</h2><p class="page-description">Grab of the Calculator from APCSA repo.</p></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <style>
+  .calculator-output {
+    /* calulator output 
+      top bar shows the results of the calculator;
+      result to take up the entirety of the first row;
+      span defines 4 columns and 1 row
+    */
+    grid-column: span 4;
+    grid-row: span 1;
+  
+    padding: 0.25em;
+    font-size: 20px;
+    border: 5px solid black;
+  
+    display: flex;
+    align-items: center;
+  }
+</style>
+
+<!-- Add a container for the animation -->
+<div id="animation">
+  <div class="calculator-container">
+      <!--result-->
+      <div class="calculator-output" id="output">0</div>
+      <!--row 1-->
+      <div class="calculator-number">1</div>
+      <div class="calculator-number">2</div>
+      <div class="calculator-number">3</div>
+      <div class="calculator-operation">+</div>
+      <!--row 2-->
+      <div class="calculator-number">4</div>
+      <div class="calculator-number">5</div>
+      <div class="calculator-number">6</div>
+      <div class="calculator-operation">-</div>
+      <!--row 3-->
+      <div class="calculator-number">7</div>
+      <div class="calculator-number">8</div>
+      <div class="calculator-number">9</div>
+      <div class="calculator-operation">*</div>
+      <!--row 4-->
+      <div class="calculator-clear">A/C</div>
+      <div class="calculator-number">0</div>
+      <div class="calculator-number">.</div>
+      <div class="calculator-equals">=</div>
+  </div>
+</div>
+
+<!-- JavaScript (JS) implementation of the calculator. -->
+<script>
+  // initialize important variables to manage calculations
+  var firstNumber = null;
+  var operator = null;
+  var nextReady = true;
+  // build objects containing key elements
+  const output = document.getElementById("output");
+  const numbers = document.querySelectorAll(".calculator-number");
+  const operations = document.querySelectorAll(".calculator-operation");
+  const clear = document.querySelectorAll(".calculator-clear");
+  const equals = document.querySelectorAll(".calculator-equals");
+
+  // Number buttons listener
+  numbers.forEach(button => {
+    button.addEventListener("click", function() {
+      number(button.textContent);
+    });
+  });
+
+  // Number action
+  function number (value) { // function to input numbers into the calculator
+      if (value != ".") {
+          if (nextReady == true) { // nextReady is used to tell the computer when the user is going to input a completely new number
+              output.innerHTML = value;
+              if (value != "0") { // if statement to ensure that there are no multiple leading zeroes
+                  nextReady = false;
+              }
+          } else {
+              output.innerHTML = output.innerHTML + value; // concatenation is used to add the numbers to the end of the input
+          }
+      } else { // special case for adding a decimal; can't have two decimals
+          if (output.innerHTML.indexOf(".") == -1) {
+              output.innerHTML = output.innerHTML + value;
+              nextReady = false;
+          }
+      }
+  }
+
+  // Operation buttons listener
+  operations.forEach(button => {
+    button.addEventListener("click", function() {
+      operation(button.textContent);
+    });
+  });
+
+  // Operator action
+  function operation (choice) { // function to input operations into the calculator
+      if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
+          firstNumber = parseInt(output.innerHTML);
+          nextReady = true;
+          operator = choice;
+          return; // exits function
+      }
+      // occurs if there is already a number stored in the calculator
+      firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
+      operator = choice;
+      output.innerHTML = firstNumber.toString();
+      nextReady = true;
+  }
+
+  // Calculator
+  function calculate (first, second) { // function to calculate the result of the equation
+      let result = 0;
+      switch (operator) {
+          case "+":
+              result = first + second;
+              break;
+          case "-":
+              result = first - second;
+              break;
+          case "*":
+              result = first * second;
+              break;
+          case "/":
+              result = first / second;
+              break;
+          default: 
+              break;
+      }
+      return result;
+  }
+
+  // Equals button listener
+  equals.forEach(button => {
+    button.addEventListener("click", function() {
+      equal();
+    });
+  });
+
+  // Equal action
+  function equal () { // function used when the equals button is clicked; calculates equation and displays it
+      firstNumber = calculate(firstNumber, parseFloat(output.innerHTML));
+      output.innerHTML = firstNumber.toString();
+      nextReady = true;
+  }
+
+  // Clear button listener
+  clear.forEach(button => {
+    button.addEventListener("click", function() {
+      clearCalc();
+    });
+  });
+
+  // A/C action
+  function clearCalc () { // clears calculator
+      firstNumber = null;
+      output.innerHTML = "0";
+      nextReady = true;
+  }
+</script>
+
+<!-- 
+Vanta animations just for fun, load JS onto the page
+-->
+<script src="/student/assets/js/three.r119.min.js"></script>
+
+<script src="/student/assets/js/vanta.halo.min.js"></script>
+
+<script src="/student/assets/js/vanta.birds.min.js"></script>
+
+<script src="/student/assets/js/vanta.net.min.js"></script>
+
+<script src="/student/assets/js/vanta.rings.min.js"></script>
+
+<script>
+// setup vanta scripts as functions
+var vantaInstances = {
+  halo: VANTA.HALO,
+  birds: VANTA.BIRDS,
+  net: VANTA.NET,
+  rings: VANTA.RINGS
+};
+
+// obtain a random vanta function
+var vantaInstance = vantaInstances[Object.keys(vantaInstances)[Math.floor(Math.random() * Object.keys(vantaInstances).length)]];
+
+// run the animation
+vantaInstance({
+  el: "#animation",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false
+});
+</script>
+
+
+  </div><a class="u-url" href="/student/2023/08/30/Calculator.html" hidden></a>
+</article>
+
+    </section>
+
+  </div>
+</body>
+
+
+</html>
