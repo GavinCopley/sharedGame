@@ -1,9 +1,9 @@
-title: Alien World
+title: Code Climbers
 description: "August 2023 to June 2024"
-owner_name: John Mortensen
-github_username: jm1021
-github_repo: "alienWorld"
-baseurl: "/alienWorld"
+owner_name: Gavin Copley
+github_username: GavinCopley
+github_repo: "sharedGame"
+baseurl: "/sharedGame"
 remote_theme: jekyll/minima
 minima:
   social_links:
