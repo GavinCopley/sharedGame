@@ -14,12 +14,9 @@ categories: [C1.4]
 Learning outcome for week.  Start shared GitHub, learn how to plan.
 
 - Weekend - Do some exploration
-  - Mr Lopez found and animated a Monkey Sprite (Gorilla)
-  - Mr M got background to be continuous
-  - Mr M put dog on background and added some effects
 
-- Monday - Get together with Mr Lopez, Safin, and Rohan.
-  - Mr M wants to work on Code Quality as there are too many globals and it caused a lot of problems.  Expectations are there will many elements to add to game and correction should be done now.
+- Monday - Get together (Ian, Gavin, John, Matthew).
+    -rework
 
 ```javascript
 class Layer {

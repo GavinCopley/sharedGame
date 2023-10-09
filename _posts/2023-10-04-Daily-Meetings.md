@@ -13,7 +13,7 @@ categories: [C1.4]
 
 Learning outcome for week.  Start shared GitHub, learn how to plan.
 
-- Wednesday - Get together with Mr Lopez, Safin, and Rohan.
+- Wednesday - Get together (John, Ian, Matthew, and Gavin).
   - Talk about initial ideas for game
   - Start a planning document: Plan.ipynb
   - Brain write
