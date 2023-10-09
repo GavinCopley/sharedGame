@@ -1,12 +1,16 @@
-title: CompSci Blogs
+title: Alien World
 description: "August 2023 to June 2024"
-owner_name: Nighthawk Coders
-github_username: GavinCopley
-baseurl: "/sharedGame"
-remote_theme: pages-themes/hacker@v0.2.0
+owner_name: John Mortensen
+github_username: jm1021
+github_repo: "alienWorld"
+baseurl: "/alienWorld"
+remote_theme: jekyll/minima
+minima:
+  social_links:
+    - { platform: github, user_url: "https://github.com/nighthawkcoders"}
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
-# remote_theme: pages-themes/midnight@v0.2.0
+# remote_theme: pages-themes/hacker@v0.2.0
 # remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/time-machine@v0.2.0
 plugins:

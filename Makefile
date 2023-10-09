@@ -1,10 +1,10 @@
-# Configuration, override port with usage: make PORT=4300
-PORT ?= 4200
-REPO_NAME ?= student
+# Configuration, override port with usage: make PORT=4200
+PORT ?= 4100
+REPO_NAME ?= Nighthawk-Pages
 LOG_FILE = /tmp/jekyll$(PORT).log
-# Exceptions will stop make
+
 SHELL = /bin/bash
-# .SHELLFLAGS = -e
+# .SHELLFLAGS = -e # Exceptions will stop make, works on MacOS
 
 # Phony Targets, makefile housekeeping for below definitions
 .PHONY: default server convert clean stop
@@ -68,7 +68,7 @@ convert: $(MARKDOWN_FILES)
 # Convert .md file, if .ipynb file is newer
 $(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
 	@echo "Converting source $< to destination $@"
-	@python -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
+	@python3 -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
 
 # Clean up project derived files, to avoid run issues stop is dependency
 clean: stop
