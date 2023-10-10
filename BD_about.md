@@ -4,4 +4,4 @@ title: About Us
 permalink: /about/
 ---
 
-Creators of Alien World
+Creators of Code Climbers

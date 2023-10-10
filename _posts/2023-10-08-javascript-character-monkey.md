@@ -23,9 +23,8 @@ courses: { compsci: {week: 1} }
     </div>
     <div>
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
-            <img id="monkeySprite" src="{{spriteImage}}">  // change sprite here
+            <img id="monkeySprite" src="{{spriteImage}}">  <!-- Change sprite here -->
         </canvas>
-
     </div>
 </body>
 
