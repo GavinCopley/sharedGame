@@ -14,7 +14,7 @@ categories: [C1.4]
 Gavin: Finish with the background and the sprite
 John: Work on the mario hacks to implement into our game
 Ian: Finish bridge and invert images for sprite
-Matthew: Find good sprites and work on the menu
+Matthew: Find good sprites and work on the menu. Make a plot for CodeClimbers.
 
 ### Acomplishments this week
 
@@ -30,7 +30,7 @@ Ian:
 
 Matthew: 
 Made a design for the main starting page
--> Made an outline of what the initial starting page would be
+-> Made an outline the main menu and the play page.
 Found a Robot sprite for the game
 
 All of these should be in different time box hacks and worked on separately. In the next coming weeks we will combine everything together to make a great game.
