@@ -12,8 +12,11 @@ categories: [C1.4]
 ### Plan for Each Person
 
 Gavin: Finish with the background and the sprite
+
 John: Work on the mario hacks to implement into our game
+
 Ian: Finish bridge and invert images for sprite
+
 Matthew: Find good sprites and work on the menu. Make a plot for CodeClimbers.
 
 ### Acomplishments this week
