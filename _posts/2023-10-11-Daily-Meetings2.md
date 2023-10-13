@@ -27,6 +27,7 @@ Finished rotating player hack, Committed and pushed (WIP, currently pretty broke
 Attempting to work on black pit hack (WIP, ChatGPT can't seem to generate it right or my environment isn't interacting well with it)
 
 Ian: 
+Added optional sprites and cut of some of the sprites idol animation because it'll be difficult to implement. Currently making a bridge or a platform for the player to stand on and jumo up to, possibly might be able to fix the robot_roder image.
 
 Matthew: 
 Made a design for the main starting page
