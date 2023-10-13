@@ -16,5 +16,22 @@ John: Work on the mario hacks to implement into our game
 Ian: Finish bridge and invert images for sprite
 Matthew: Find good sprites and work on the menu
 
+### Acomplishments this week
+
+Gavin: 
+Added the new sprite image (WIP still need to adjust speed)
+Added the new background with parallax effect (Need to find a way to remove the hill code)
+
+John: 
+Finished rotating player hack, Committed and pushed (WIP, currently pretty broken, but somewhat functional, player only rotates -15 degrees).
+Attempting to work on black pit hack (WIP, ChatGPT can't seem to generate it right or my environment isn't interacting well with it)
+
+Ian: 
+
+Matthew: 
+Made a design for the main starting page
+-> Made an outline of what the initial starting page would be
+Found a Robot sprite for the game
+
 All of these should be in different time box hacks and worked on separately. In the next coming weeks we will combine everything together to make a great game.
   
