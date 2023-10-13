@@ -20,7 +20,7 @@ Matthew: Find good sprites and work on the menu. Make a plot for CodeClimbers.
 
 Gavin: 
 Added the new sprite image (WIP still need to adjust speed)
-Added the new background with parallax effect (Need to find a way to remove the hill code)
+Added the new background with parallax effect
 
 John: 
 Finished rotating player hack, Committed and pushed (WIP, currently pretty broken, but somewhat functional, player only rotates -15 degrees).
