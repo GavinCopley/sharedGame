@@ -31,6 +31,12 @@ For this review, I will mostly talk about my coding for the main menu or anythin
 
 - Share GitHub Code, OOP accomplishments
 
+# Progress
+
+First off, I'm going to figure out how to code a simple button because I need to have a proper foundation in order to make a main menu page.
+
 # Reflection
 
-I will work on this after the Integration Live Review. For now, I hope that my coding adventure will be less rock, especially as I deal with my other classes, and I hope to not let my team down.
+I will work on this after the Integration Live Review. For now, I hope that my coding adventure will be less rocky, especially as I deal with my other classes, and I hope to not let my team down.
+
+<br> <img src="images/IdealMainPage1.png" alt="Snow" style="width:25%;length:25%">
