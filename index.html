@@ -1,4 +1,118 @@
 ---
 layout: base
-title: Game HERE
+title: Code Climbers!
+image: /images/background1.png
+robotSprite: /images/sprite1.png
 ---
+
+<!-- Liquid code, run by Jekyll, used to define location of asset(s) -->
+{% assign backgroundFile = site.baseurl | append: page.image %}
+{% assign robotSpriteImage = site.baseurl | append: page.robotSprite %}
+
+<style>
+    #controls {
+        position: relative;
+        z-index: 2; /* Ensure the controls are on top */
+    }
+</style>
+
+<!-- Prepare DOM elements -->
+<!-- Wrap both the rob canvas and controls in a container div -->
+<div id="canvasContainer">
+    <div id="controls"> <!-- Controls -->
+        <!-- Background controls -->
+        <button id="toggleCanvasEffect">Invert</button>
+        <!-- Dog controls -->
+        <input type="radio" name="animation" id="idle">
+        <label for="idle">Idle</label>
+        <input type="radio" name="animation" id="barking">
+        <label for="barking">Barking</label>
+        <input type="radio" name="animation" id="walking" checked>
+        <label for="walking">Walking</label>
+    </div>
+</div>
+
+<script type="module">
+    import GameEnv from '{{site.baseurl}}/assets/js/codeClimbers/GameEnv.js';
+    import { initBackground } from '{{site.baseurl}}/assets/js/codeClimbers/Background.js';
+    import { initDog } from '{{site.baseurl}}/assets/js/codeClimbers/CharacterDog.js';
+    import {initMonkey} from '{{site.baseurl}}/assets/js/codeClimbers/CharacterRob.js';
+
+    // Prepare Background Image
+    const backgroundImg = new Image();
+    backgroundImg.src = '{{backgroundFile}}';  // Jekyll/Liquid puts filename here
+
+    // Prepare HTML with Background Canvas
+    const backgroundCanvas = document.createElement("canvas");
+    backgroundCanvas.id = "background";
+    document.body.appendChild(backgroundCanvas);
+
+    // Prepare Dog Image
+    const robImg = new Image();
+    robImg.src = '{{robotSpriteImage}}';
+
+    // Prepare HTML with Dog Canvas
+    const robCanvas = document.createElement("canvas");
+    robCanvas.id = "characters";
+    document.body.appendChild(robCanvas);
+
+    // Prepare Monkey Image
+    const monkeyImg = new Image();
+    monkeyImg.src = "{{monkeySpriteImage}}";
+
+    // Prepare HTML with Monkey Canvas
+    const monkeyCanvas = document.createElement("canvas");
+    monkeyCanvas.id = "characters";
+    document.body.appendChild(monkeyCanvas);
+
+    // Setup Globals
+    GameEnv.gameSpeed = 2;
+    GameEnv.controls = document.getElementById("controls");
+
+    backgroundImg.onload = function () {
+
+        // Background object(s)
+        const backgroundSpeedRatio = 0.2
+        var backgroundObj = initBackground(backgroundCanvas, backgroundImg, backgroundSpeedRatio);
+
+        // Character object(s)
+        const robSpeedRatio = 0.2
+        var robObj = initDog(robCanvas, robImg, robSpeedRatio);
+        const monkeySpeedRatio = 0.7
+        var monkeyObj = initMonkey(monkeyCanvas, monkeyImg, monkeySpeedRatio);
+
+        // Game loop
+        function gameLoop() {
+            backgroundObj.update();
+            backgroundObj.draw();
+
+            robObj.update();
+            robObj.draw();
+
+            monkeyObj.update();
+            monkeyObj.draw();
+
+            requestAnimationFrame(gameLoop);  // cycle game, aka recursion
+        }
+
+        // Start game
+        gameLoop();
+    }
+
+    /* Toggle "canvas filter property" */
+    var isFilterEnabled = true;
+    const defaultFilter = getComputedStyle(document.documentElement).getPropertyValue('--default-canvas-filter');
+
+    toggleCanvasEffect.addEventListener("click", function () {
+        if (isFilterEnabled) {
+            backgroundCanvas.style.filter = "none";  // remove filter
+            robCanvas.style.filter = "none";
+            monkeyCanvas.style.filter = "none";
+        } else {
+            backgroundCanvas.style.filter = defaultFilter; // Apply the default filter value
+            robCanvas.style.filter = defaultFilter;
+            monkeyCanvas.style.filter = defaultFilter;
+        }
+        isFilterEnabled = !isFilterEnabled;  // switch boolean value
+    });
+</script>
