@@ -12,3 +12,5 @@ categories: [C1.4]
 # What We Learned:
 
 - Matthew: I learned to how to code a main menu for the game, which requires the use of buttons and modifying code.
+
+-Ian: I learned the purpose of classes, and that its similar to div classes in html. I'm thinking of using div classes in order to set up stuff into catergories, and be able to put links to possibly link to the actual game.
