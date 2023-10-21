@@ -2,9 +2,10 @@
 title: Code Climbers!
 layout:
 image: 
-platform: 
+platform: /images/road.png
 sprite: 
 ---
+{% assign roadImage = site.baseurl | append: page.road %}
 
 
 <!DOCTYPE html>
@@ -217,4 +218,8 @@ body {
 
 <canvas></canvas>
 
-<script src="{{site.baseurl}}/assets/js/codeClimbers/game.js"></script>
+<script src="{{site.baseurl}}/assets/js/codeClimbers/game.js" type="module">
+    const roadImg = new Image();
+    roadImg.src = '{{roadImage}}';
+    import platform from  "{{site.baseurl}}/images/road.png"
+</script>
