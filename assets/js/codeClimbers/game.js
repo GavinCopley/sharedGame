@@ -1,11 +1,10 @@
-import platform from "/{{site.baseurl}}/images/road.png"
-console.log("platform")
+const roadImage = document.getElementById("roadImage");
 
 const canvas = document.querySelector("canvas")
 const c = canvas.getContext("2d")
 
-canvas.width = 650;
-canvas.height = 400;
+canvas.width = 1024;
+canvas.height = 576;
 
 const gravity = 1.5
 
@@ -41,26 +40,35 @@ class Player {
 }
 
 class Platform {
-    constructor({ x, y }) {
+    constructor({ x, y, image }) {
         this.position = {
             x,
             y
         }
         this.width = 200
         this.height = 20
+
+        this.image = image
     }
 
     draw() {
-        c.fillStyle = "blue"
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.drawImage(this.image, this.position.x, this.position.y)
     }
 }
 
+const image = new Image()
+image.src = roadImage
+
 const player = new Player()
-const platforms = [new Platform({
-    x: 200, y:100
+const platforms = [
+    new Platform({
+    x: 200, 
+    y:100,
+    image: roadImage
 }), new Platform({
-    x: 500,  y:200
+    x: 500,  
+    y:200,
+    image: roadImage
 })]
 
 const keys = {

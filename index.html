@@ -24,6 +24,13 @@ sprite:
   padding: 0;
   box-sizing: border-box;
 }
+.game {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
 body {
   font-family: "Poppins", sans-serif;
@@ -179,6 +186,9 @@ body {
 
 <body translate="no">
   <body>
+    <div class="game">
+      <script src="{{site.baseurl}}/assets/js/codeClimbers/game.js" type="module"></script>
+    </div>
     <nav>
       <div class="navbar">
         <div class="container nav-container">
@@ -207,7 +217,7 @@ body {
   
   
 </body>
-
+<img id="roadImage" src="{{site.baseurl}}/assets/js/img/road.png" style="display: none;">
 </html>
 
 <style>
@@ -217,9 +227,3 @@ body {
 </style>
 
 <canvas></canvas>
-
-<script src="{{site.baseurl}}/assets/js/codeClimbers/game.js" type="module">
-    const roadImg = new Image();
-    roadImg.src = '{{roadImage}}';
-    import platform from  "{{site.baseurl}}/images/road.png"
-</script>
