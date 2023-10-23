@@ -45,10 +45,27 @@ class Platform {
             x,
             y
         }
-        this.width = 200
-        this.height = 20
-
         this.image = image
+
+        this.width = image.width
+        this.height = image.height
+    }
+
+    draw() {
+        c.drawImage(this.image, this.position.x, this.position.y)
+    }
+}
+
+class GenericObject {
+    constructor({ x, y, image }) {
+        this.position = {
+            x,
+            y
+        }
+        this.image = image
+
+        this.width = image.width
+        this.height = image.height
     }
 
     draw() {
@@ -68,13 +85,35 @@ const platforms = [
 }), new Platform({
     x: 500,  
     y:200,
-    image: roadImage
-})]
+    image: roadImage,
+}), new Platform({
+    x: -1,
+    y: 416,
+    image: floorImage,
+}), new Platform({
+    x: 899,
+    y: 416,
+    image: floorImage,
+})
+]
+
+const genericObjects = [
+    new GenericObject({
+        x: 0,
+        y: 0,
+        image: backgroundImage
+    }),
+    new GenericObject({
+        x: 0,
+        y: -50,
+        image: buildingImage
+    })
+]
 
 const keys = {
     right: {
         pressed: false
-    },
+    }  ,
     left: {
         pressed: false
     }
@@ -84,7 +123,13 @@ let scrollOffset = 0
 
 function animate() {
     requestAnimationFrame(animate)
-    c.clearRect(0, 0, canvas.width, canvas.height)
+    c.fillStyle = "white"
+    c.fillRect(0, 0, canvas.width, canvas.height)
+
+    genericObjects.forEach(genericObject => {
+        genericObject.draw()
+    })
+
     player.update()
     platforms.forEach((platform) => {
         platform.draw()
@@ -153,7 +198,7 @@ addEventListener("keydown", ({ keyCode }) => {
         
         case 87:
             console.log("up")
-            player.velocity.y -= 20
+            player.velocity.y -= 5
             break
     }
 })
