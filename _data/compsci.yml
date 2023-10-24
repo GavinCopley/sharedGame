@@ -8,9 +8,11 @@ Unit2:
   title: Start Coding
   description: Start Agile development process. Move planning to GitHub Issues and Projects.
   start: 2
-  end: 3
+  end: 6
 Unit3:
   title: Preparing for N@TM
   description: Starting incorporating JavaScript into the game. Start documenting your journey and changes.
   start: 4
   end: 6
+
+  // Not sure what happened to Unit 3 - Matthew
