@@ -5,7 +5,7 @@ layout: post
 title: Matthew's Plan
 description: Start a game project
 type: plans
-courses: { compsci: {week: 2} }
+courses: { compsci: {week: 3} }
 categories: [C1.4]
 ---
 
