@@ -12,7 +12,5 @@ Unit2:
 Unit3:
   title: Preparing for N@TM
   description: Starting incorporating JavaScript into the game. Start documenting your journey and changes.
-  start: 4
-  end: 6
-
-// Not sure what happened to Unit 3 - Matthew
+  start: 7
+  end: 8
