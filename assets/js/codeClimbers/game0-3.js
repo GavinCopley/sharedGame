@@ -10,7 +10,10 @@ const gravity = 1.5
 
 class Player {
     constructor() {
+<<<<<<< HEAD
         this.speed = 10
+=======
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
         this.position = {
             x: 100,
             y: 100
@@ -20,6 +23,10 @@ class Player {
             y: 0
         }
 
+<<<<<<< HEAD
+=======
+        this.canJump = true;
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
         this.width = 30
         this.height = 30
     }
@@ -36,6 +43,10 @@ class Player {
 
         if (this.position.y + this.height + this.velocity.y <= canvas.height)
             this.velocity.y += gravity
+<<<<<<< HEAD
+=======
+        else this.velocity.y = 0
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
     }
 }
 
@@ -76,10 +87,46 @@ class GenericObject {
 const image = new Image()
 image.src = roadImage
 
+<<<<<<< HEAD
 let player = new Player()
 
 let platforms = []
 let genericObjects = []
+=======
+const player = new Player()
+const platforms = [
+    new Platform({
+    x: 200, 
+    y:100,
+    image: roadImage
+}), new Platform({
+    x: 500,  
+    y:200,
+    image: roadImage,
+}), new Platform({
+    x: -1,
+    y: 416,
+    image: floorImage,
+}), new Platform({
+    x: 899,
+    y: 416,
+    image: floorImage,
+})
+]
+
+const genericObjects = [
+    new GenericObject({
+        x: 0,
+        y: 0,
+        image: backgroundImage
+    }),
+    new GenericObject({
+        x: 0,
+        y: -50,
+        image: buildingImage
+    })
+]
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
 
 const keys = {
     right: {
@@ -92,6 +139,7 @@ const keys = {
 
 let scrollOffset = 0
 
+<<<<<<< HEAD
 function init() {
     player = new Player()
     platforms = [
@@ -153,11 +201,79 @@ function init() {
     scrollOffset = 0
 }
 
+=======
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
 function animate() {
     requestAnimationFrame(animate)
     c.fillStyle = "white"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
+<<<<<<< HEAD
+=======
+    genericObjects.forEach(genericObject => {
+        genericObject.draw()
+    })
+
+    player.update()
+    platforms.forEach((platform) => {
+        platforms.forEach((platform) => {
+            if (
+                player.position.y + player.height <= platform.position.y &&
+                player.position.y + player.height + player.velocity.y >= platform.position.y &&
+                player.position.x + player.width >= platform.position.x &&
+                player.position.x <= platform.position.x + platform.width
+            ) {
+                player.velocity.y = 0;
+                player.position.y = platform.position.y - player.height; // Ensure the player rests on top of the platform
+                player.canJump = true; // Reset the canJump flag when landing on a platform
+            // Side collision with the right side of the platform
+                if (
+                player.position.x + player.width > platform.position.x &&
+                player.position.x < platform.position.x + platform.width &&
+                player.position.y + player.height > platform.position.y &&
+                player.position.y < platform.position.y + playform.height
+            ) {
+                // You can add code here to respond to side collisions
+            } 
+                // Bottom collision with the top side of the platform
+                if (
+                    player.position.y + player.height > platform.position.y &&
+                    player.position.y < platform.position.y &&
+                    player.position.x + player.width > platform.position.x &&
+                    player.position.x < platform.position.x + platform.width
+                ) {
+                    // You can add code here to respond to bottom collisions
+                }
+            }
+        });
+        platform.draw()
+    })
+
+    if (keys.right.pressed && player.position.x < 400) {
+        player.velocity.x = 5
+    } else if (keys.left.pressed && player.position.x > 100) {
+        player.velocity.x = -5
+    } else {
+    player.velocity.x = 0
+        
+        if (keys.right.pressed) {
+            platforms.forEach((platform) => {
+                platform.position.x -= 5
+                scrollOffset += 5
+            })
+            console.log("rightplat")
+        } else if (keys.left.pressed) {
+            platforms.forEach((platform) => {
+                platform.position.x += 5
+                scrollOffset -= 5
+            })
+            console.log("leftplat")
+        }
+    }
+
+    console.log(scrollOffset)
+
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
     //platform collision
     platforms.forEach((platform) => {
         if (
@@ -171,6 +287,7 @@ function animate() {
         }
     })
 
+<<<<<<< HEAD
     genericObjects.forEach(genericObject => {
         genericObject.draw()
     })
@@ -226,6 +343,13 @@ function animate() {
 }
 
 init()
+=======
+    if (scrollOffset > 2000) {
+        console.log("win")
+    }
+}
+
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
 animate()
 
 addEventListener("keydown", ({ keyCode }) => {
@@ -247,8 +371,16 @@ addEventListener("keydown", ({ keyCode }) => {
         
         case 87:
             console.log("up")
+<<<<<<< HEAD
             player.velocity.y -= 25
             break
+=======
+            if (player.canJump) {
+                player.velocity.y = -25; // Apply the jump
+                player.canJump = false; // Prevent double jumping
+            }
+            break;
+>>>>>>> 83a6a5f (Trying to add "Double Jump" Page)
     }
 })
 
