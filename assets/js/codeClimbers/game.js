@@ -19,6 +19,7 @@ class Player {
             y: 0
         }
 
+        this.canJump = true;
         this.width = 30
         this.height = 30
     }
@@ -132,6 +133,18 @@ function animate() {
 
     player.update()
     platforms.forEach((platform) => {
+        platforms.forEach((platform) => {
+            if (
+                player.position.y + player.height <= platform.position.y &&
+                player.position.y + player.height + player.velocity.y >= platform.position.y &&
+                player.position.x + player.width >= platform.position.x &&
+                player.position.x <= platform.position.x + platform.width
+            ) {
+                player.velocity.y = 0;
+                player.position.y = platform.position.y - player.height; // Ensure the player rests on top of the platform
+                player.canJump = true; // Reset the canJump flag when landing on a platform
+            }
+        });
         platform.draw()
     })
 
@@ -198,8 +211,11 @@ addEventListener("keydown", ({ keyCode }) => {
         
         case 87:
             console.log("up")
-            player.velocity.y -= 25
-            break
+            if (player.canJump) {
+                player.velocity.y = -25; // Apply the jump
+                player.canJump = false; // Prevent double jumping
+            }
+            break;
     }
 })
 
