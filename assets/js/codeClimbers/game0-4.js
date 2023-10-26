@@ -20,36 +20,16 @@ class Player {
             y: 0
         }
 
-        this.canJump = true;
         this.width = 30
         this.height = 30
-        this.image = spriteRight
-        this.frames = 0
-        this.sprites = {
-            right: spriteRight,
-            left: spriteLeft
-        }
-
-        this.currentSprite = this.sprites.right
     }
 
     draw() {
-        c.drawImage(
-            this.currentSprite,
-            30 * this.frames,
-            0,
-            30,
-            30,
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height)
+        c.fillStyle = "red"
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 
     update() {
-        this.frames++
-        if (this.frames >8) this.frames = 0
-
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
@@ -178,60 +158,6 @@ function animate() {
     c.fillStyle = "white"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    genericObjects.forEach(genericObject => {
-        genericObject.draw()
-    })
-
-    player.update()
-    platforms.forEach((platform) => {
-        platforms.forEach((platform) => {
-            if (
-                player.position.y + player.height <= platform.position.y &&
-                player.position.y + player.height + player.velocity.y >= platform.position.y &&
-                player.position.x + player.width >= platform.position.x &&
-                player.position.x <= platform.position.x + platform.width
-            ) {
-                player.velocity.y = 0;
-                player.position.y = platform.position.y - player.height; // Ensure the player rests on top of the platform
-                player.canJump = true; // Reset the canJump flag when landing on a platform
-            }
-        });
-        platform.draw()
-    })
-
-    if (keys.right.pressed && player.position.x < 400) {
-        player.velocity.x = player.speed
-    } else if (
-        (keys.left.pressed && player.position.x > 100) || 
-        (keys.left.pressed && scrollOffset === 0 && player.position.x > 0) 
-    ) {
-        player.velocity.x = -player.speed
-    } else {
-    player.velocity.x = 0
-        
-        if (keys.right.pressed) {
-            platforms.forEach((platform) => {
-                platform.position.x -= player.speed
-                scrollOffset += player.speed
-            })
-            genericObjects.forEach(genericObject => {
-                genericObject.position.x -= player.speed * .66
-            })
-            console.log("rightplat")
-        } else if (keys.left.pressed && scrollOffset > 0) {
-            platforms.forEach((platform) => {
-                platform.position.x += player.speed
-                scrollOffset -= player.speed
-            })
-            console.log("leftplat")
-            genericObjects.forEach(genericObject => {
-                genericObject.position.x += player.speed * .66
-            })
-        }
-    }
-
-    console.log(scrollOffset + "scrollOffset")
-
     //platform collision
     platforms.forEach((platform) => {
         if (
@@ -251,18 +177,6 @@ function animate() {
 
     player.update()
     platforms.forEach((platform) => {
-        platforms.forEach((platform) => {
-            if (
-                player.position.y + player.height <= platform.position.y &&
-                player.position.y + player.height + player.velocity.y >= platform.position.y &&
-                player.position.x + player.width >= platform.position.x &&
-                player.position.x <= platform.position.x + platform.width
-            ) {
-                player.velocity.y = 0;
-                player.position.y = platform.position.y - player.height; // Ensure the player rests on top of the platform
-                player.canJump = true; // Reset the canJump flag when landing on a platform
-            }
-        });
         platform.draw()
     })
 
@@ -320,7 +234,6 @@ addEventListener("keydown", ({ keyCode }) => {
         case 65:
             console.log("left")
             keys.left.pressed = true
-            player.currentSprite = player.sprites.left
             break
 
         case 83:
@@ -330,16 +243,12 @@ addEventListener("keydown", ({ keyCode }) => {
         case 68:
             console.log("right")
             keys.right.pressed = true
-            player.currentSprite = player.sprites.right
             break
         
         case 87:
             console.log("up")
-            if (player.canJump) {
-                player.velocity.y = -25; // Apply the jump
-                player.canJump = false; // Prevent double jumping
-            }
-            break;
+            player.velocity.y -= 25
+            break
     }
 })
 
