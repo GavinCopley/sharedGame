@@ -140,11 +140,22 @@ function init() {
         y: 250,
         image: roadImage,
     }), new Platform({
+        x: 1200,  
+        y: 220,
+        image: roadImage,
+    }), 
+        new Platform({
+        x: 1500,  
+        y: 190,
+        image: roadImage,
+    }), 
+        new Platform({
         x: -1,
         y: 416,
         image: floorImage,
-    }), new Platform({
-        x: 1300,
+    }), 
+        new Platform({
+        x: 1900,
         y: 416,
         image: floorImage,
     })
@@ -170,7 +181,7 @@ function init() {
             x: 0,
             y: -50,
             image: buildingImage
-        }), 
+        }),
         new GenericObject({
             x: 1000,
             y: -50,
@@ -317,7 +328,7 @@ function animate() {
     console.log(scrollOffset + "scrollOffset")
     console.log(isWin);
     // win
-    if (scrollOffset > 4000) {
+    if (scrollOffset > 2000) {
         
         console.log("win");
         isWin = true;
