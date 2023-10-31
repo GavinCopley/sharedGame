@@ -5,7 +5,7 @@ layout: post
 title: Final Review Ticket (Post N@TM)
 description: Reflection of CSSE1
 type: tangibles
-courses: { compsci: {week: 6} }
+courses: { compsci: {week: 5} }
 categories: [C1.4]
 ---
 
