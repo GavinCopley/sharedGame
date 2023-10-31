@@ -379,6 +379,11 @@ addEventListener("keyup", ({ keyCode }) => {
             keys.right.pressed = false
             break
         
+        case 32:
+            console.log("up")
+            player.velocity.y -= 0
+            break
+            
         case 87:
             console.log("up")
             player.velocity.y -= 0
