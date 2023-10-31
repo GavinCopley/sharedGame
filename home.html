@@ -180,7 +180,35 @@ body {
 <body translate="no">
   <body>
     <div class="game">
-      <script src="{{site.baseurl}}/assets/js/codeClimbers/game.js" type="module"></script>
+      <script>
+        var isWin = false;
+      </script>
+      <script id="game0" type="module"></script>
+      <script> 
+        console.log(isWin + "isWin!!")
+        const script = document.getElementById("game0");
+        script.src = "{{site.baseurl}}/assets/js/codeClimbers/game.js";
+
+          function switchLevel() {
+            console.log("change!!");
+            if (isWin === true) {
+              updateGameScriptSource();
+              console.log("its true!");
+            };
+              
+            function updateGameScriptSource() {
+              script.remove()
+              const newScript = document.createElement("script");
+              newScript.id = "game0";
+              newScript.type = "module";
+              newScript.src = "{{site.baseurl}}/assets/js/codeClimbers/game0-1.js";
+              document.body.appendChild(newScript);
+              console.log("new game!!");
+              console.log(script.src);
+            };
+          };
+          setInterval(switchLevel, 100);
+      </script>
     </div>
     <nav>
       <div class="navbar">

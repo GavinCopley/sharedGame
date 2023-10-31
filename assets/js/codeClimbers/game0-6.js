@@ -6,11 +6,13 @@ const c = canvas.getContext("2d")
 canvas.width = 1024;
 canvas.height = 576;
 
-const gravity = 1
+const gravity = 1.5;
+
+let level = 0;
 
 class Player {
     constructor() {
-        this.speed = 6
+        this.speed = 5
         this.position = {
             x: 100,
             y: 100
@@ -185,6 +187,63 @@ function init() {
     scrollOffset = 0
 }
 
+function second() {
+    player = new Player()
+    platforms = [
+        new Platform({
+        x: 200, 
+        y:250,
+        image: roadImage
+        }), new Platform({
+        x: 500,  
+        y:200,
+        image: roadImage,
+        }), new Platform({
+        x: -1,
+        y: 416,
+        image: floorImage,
+        }), new Platform({
+        x: 1300,
+        y: 416,
+        image: floorImage,
+        })
+    ]
+
+    genericObjects = [
+        new GenericObject({
+            x: 0,
+            y: 0,
+            image: backgroundImage
+        }),
+        new GenericObject({
+            x: 1000,
+            y: 0,
+            image: backgroundImage
+        }),
+        new GenericObject({
+            x: 0,
+            y: -50,
+            image: buildingImage
+        }),
+        new GenericObject({
+            x: 1000,
+            y: -50,
+            image: buildingImage
+        })
+    ]
+
+    const keys = {
+        right: {
+            pressed: false
+        }  ,
+        left: {
+            pressed: false
+        }
+    }
+
+    // scrollOffset = 0
+}
+
 function animate() {
     requestAnimationFrame(animate)
     c.fillStyle = "white"
@@ -310,18 +369,11 @@ function animate() {
     }
 
     console.log(scrollOffset + "scrollOffset")
-    console.log(isWin);
+
     // win
     if (scrollOffset > 2000) {
-        
-        console.log("win");
-        isWin = true;
-
-        var script = document.getElementById("game0");
-        script.src = "{{site.baseurl}}/assets/js/codeClimbers/game0-1.js";
+        console.log("win")
     }
-
-    
 
     // lose
     if (player.position.y > canvas.height) {
@@ -330,7 +382,13 @@ function animate() {
     }
 }
 
-init()
+if (level === 0) {
+    init();
+    level = 1
+} else if (level === 1) {
+    second();
+}
+
 animate()
 
 addEventListener("keydown", ({ keyCode }) => {
@@ -352,18 +410,11 @@ addEventListener("keydown", ({ keyCode }) => {
             player.currentSprite = player.sprites.right
             break
         
-        case 32:
-            console.log("up")
-            if (player.canJump) {
-                player.velocity.y = -25; //Apply the jump
-                player.canJump = false; // Prevent double jumping
-            }
         case 87:
             console.log("up")
             if (player.canJump) {
                 player.velocity.y = -25; // Apply the jump
                 player.canJump = false; // Prevent double jumping
-                // 2 Jump Keys: W and Space
             }
             break;
     }
@@ -386,11 +437,6 @@ addEventListener("keyup", ({ keyCode }) => {
             keys.right.pressed = false
             break
         
-        case 32:
-            console.log("up")
-            player.velocity.y -= 0
-            break
-            
         case 87:
             console.log("up")
             player.velocity.y -= 0
