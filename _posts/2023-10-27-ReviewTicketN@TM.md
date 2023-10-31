@@ -17,4 +17,4 @@ Matthew: I was able to integrate the menu into the game and fixed double jumping
 
 Gavin:
 
-Ian:
+Ian: I was able to fix the issue in regards to the question markdown files interferring with the webpage, and was able to make it work more consistently. I added 6 more question pages to use as placeholders, and added a bit more sprites like the robot and other sprites just incase the other sprites wont work out in a good way.
