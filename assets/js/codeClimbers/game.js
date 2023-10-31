@@ -345,11 +345,18 @@ addEventListener("keydown", ({ keyCode }) => {
             player.currentSprite = player.sprites.right
             break
         
+        case 32:
+            console.log("up")
+            if (player.canJump) {
+                player.velocity.y = -25; //Apply the jump
+                player.canJump = false; // Prevent double jumping
+            }
         case 87:
             console.log("up")
             if (player.canJump) {
                 player.velocity.y = -25; // Apply the jump
                 player.canJump = false; // Prevent double jumping
+                // 2 Jump Keys: W and Space
             }
             break;
     }
