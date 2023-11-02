@@ -10,7 +10,7 @@ const gravity = 1
 
 class Player {
     constructor() {
-        this.speed = 6
+        this.speed = 4
         this.position = {
             x: 100,
             y: 100
@@ -371,13 +371,13 @@ addEventListener("keydown", ({ keyCode }) => {
         case 32:
             console.log("up")
             if (player.canJump) {
-                player.velocity.y = -25; //Apply the jump
+                player.velocity.y = -15; //Apply the jump
                 player.canJump = false; // Prevent double jumping
             }
         case 87:
             console.log("up")
             if (player.canJump) {
-                player.velocity.y = -25; // Apply the jump
+                player.velocity.y = -15; // Apply the jump
                 player.canJump = false; // Prevent double jumping
                 // 2 Jump Keys: W and Space
             }
