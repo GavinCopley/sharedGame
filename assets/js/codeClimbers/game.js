@@ -360,13 +360,13 @@ addEventListener("keydown", ({ keyCode }) => {
         case 32:
             console.log("up")
             if (player.canJump) {
-                player.velocity.y = -15; //Apply the jump
+                player.velocity.y = -20; //Apply the jump
                 player.canJump = false; // Prevent double jumping
             }
         case 87:
             console.log("up")
             if (player.canJump) {
-                player.velocity.y = -15; // Apply the jump
+                player.velocity.y = -20; // Apply the jump
                 player.canJump = false; // Prevent double jumping
                 // 2 Jump Keys: W and Space
             }
